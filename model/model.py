@@ -10,3 +10,5 @@ class BaseModel(Model):
         database = db
 
 
+class Movie(BaseModel):
+    title = CharField(max_length=80)

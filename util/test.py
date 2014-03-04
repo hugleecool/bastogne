@@ -6,7 +6,7 @@ db = client.bastogne
 
 movie = db.movie
 
-m = movie.find({'title': '阿甘正传'})
+m = movie.find({'title': '美国往事'})
 
 for i in m:
     print(i['title'])

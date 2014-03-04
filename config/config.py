@@ -7,3 +7,13 @@ database = {
     'autocommit': True,
     'buffered': True,
 }
+
+settings = {
+    "app": 'Bastogne',
+    "template_path": "templates",
+    "static_path": "static",
+    "cookie_secret": "entercookiesecret",
+    "login_url": "/login",
+    "xsrf_cookies": True,
+    "debug": False,
+}

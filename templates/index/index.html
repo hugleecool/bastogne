@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends '../base.html' %}
+{% block main %}
+    {% for post in posts %}
+        {{ post['title'] }}
+    {% end %}
+{% end %}

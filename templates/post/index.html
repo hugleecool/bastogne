@@ -1,22 +1,61 @@
 {% extends '../base.html' %}
+{% block title %}{{ post['title'] }}{% end %}
 {% block main %}
     <div class="post">
-        <h1><a href="/post/{{ post['_id'] }}">{{ post['title'] }}</a></h1>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Format</th><th>Size</th><th>Download</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for download in post['download'] %}
+        <h1><a href="/post/{{ post['_id'] }}">{{ post['title'] }}</a>
+            <small>
+                <span>
+                    <a href="{{ douban_movie['alt'] }}" title="去豆瓣查看" target="_blank">
+                        <img src="{{ static_url('image/douban/favicon_24x24.png') }}">
+                    </a>
+                    {{ douban_movie['rating']['average'] }}
+                </span>&nbsp
+                <span>
+                    {% for tag in douban_movie['genres'] %}
+                        {{ tag }}
+                    {% end %}
+                </span>
+            </small>
+        </h1>
+        <hr>
+        <div class="row">
+            <div class="col-md-5">
+                <img class="col-md-12" src="{{ douban_movie['images']['large'] }}">
+            </div>
+            <div class="col-md-7">
+                <p>片名： {{ douban_movie['title'] }}</p>
+                <p>年代： {{ douban_movie['year'] }}</p>
+                <p>导演:
+                    {% for director in douban_movie['directors'] %}
+                        <a href="{{ director['alt'] }}">{{ director['name'] }}</a>
+                    {% end %}
+                </p>
+                <p>主演:
+                    {% for cast in douban_movie['casts'] %}
+                        &nbsp<a href="{{ cast['alt'] }}">{{ cast['name'] }}</a>
+                    {% end %}
+                </p>
+                <p>简介： {{ douban_movie['summary'] }}</p>
+            </div>
+        </div>
+        <hr>
+        <div class="download">
+            <table class="table">
+                <thead>
                     <tr>
-                        <td>{{ download['format'] }}</td>
-                        <td>{{ download['size'] }}</td>
-                        <td><a href="{{ download['href'] }}">{{ download['name'] }}</a></td>
+                        <th>Format</th><th>Size</th><th>Download</th>
                     </tr>
-                {% end %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    {% for download in post['download'] %}
+                        <tr>
+                            <td>{{ download['format'] }}</td>
+                            <td>{{ download['size'] }}</td>
+                            <td><a href="{{ download['href'] }}">{{ download['name'] }}</a></td>
+                        </tr>
+                    {% end %}
+                </tbody>
+            </table>
+        </div>
     </div>
 {% end %}

@@ -38,5 +38,5 @@ class Movie():
 
 if __name__ == '__main__':
     movie = Movie()
-    m = movie.get_movie('色,戒')
+    m = movie.get_movie('飞行堡垒')
     print(m)

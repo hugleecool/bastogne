@@ -2,7 +2,7 @@
 {% block title %}{{ post['title'] }}{% end %}
 {% block main %}
     <div class="post">
-        <h1><a href="/post/{{ post['_id'] }}">{{ post['title'] }}</a>
+        <h1><a href="/post/{{ post['id'] }}">{{ post['title'] }}</a>
             <small>
                 <span>
                     <a href="{{ douban_movie['alt'] }}" title="去豆瓣查看" target="_blank">
@@ -25,12 +25,12 @@
             <div class="col-md-7">
                 <p>片名： {{ douban_movie['title'] }}</p>
                 <p>年代： {{ douban_movie['year'] }}</p>
-                <p>导演:
+                <p>导演:&nbsp&nbsp
                     {% for director in douban_movie['directors'] %}
                         <a href="{{ director['alt'] }}">{{ director['name'] }}</a>
                     {% end %}
                 </p>
-                <p>主演:
+                <p>主演:&nbsp&nbsp
                     {% for cast in douban_movie['casts'] %}
                         &nbsp<a href="{{ cast['alt'] }}">{{ cast['name'] }}</a>
                     {% end %}
@@ -58,4 +58,8 @@
             </table>
         </div>
     </div>
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js"></script>
+    <!-- UY END -->
 {% end %}

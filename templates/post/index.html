@@ -5,13 +5,13 @@
         <h1><a href="/post/{{ post['id'] }}">{{ post['title'] }}</a>
             <small>
                 <span>
-                    <a href="{{ douban_movie['alt'] }}" title="去豆瓣查看" target="_blank">
+                    <a href="{{ post['alt'] }}" title="去豆瓣查看" target="_blank">
                         <img src="{{ static_url('image/douban/favicon_24x24.png') }}">
                     </a>
-                    {{ douban_movie['rating']['average'] }}
+                    {{ post['rating'] }}
                 </span>&nbsp
                 <span>
-                    {% for tag in douban_movie['genres'] %}
+                    {% for tag in post['genres'] %}
                         {{ tag }}
                     {% end %}
                 </span>
@@ -20,22 +20,22 @@
         <hr>
         <div class="row">
             <div class="col-md-5">
-                <img class="col-md-12" src="{{ douban_movie['images']['large'] }}">
+                <img class="col-md-12" src="{{ post['image'] }}">
             </div>
             <div class="col-md-7">
-                <p>片名： {{ douban_movie['title'] }}</p>
-                <p>年代： {{ douban_movie['year'] }}</p>
+                <p>片名： {{ post['title'] }}</p>
+                <p>年代： {{ post['year'] }}</p>
                 <p>导演:&nbsp&nbsp
-                    {% for director in douban_movie['directors'] %}
-                        <a href="{{ director['alt'] }}">{{ director['name'] }}</a>
+                    {% for director in post['directors'] %}
+                        <a href="">{{ director }}</a>
                     {% end %}
                 </p>
                 <p>主演:&nbsp&nbsp
-                    {% for cast in douban_movie['casts'] %}
-                        &nbsp<a href="{{ cast['alt'] }}">{{ cast['name'] }}</a>
+                    {% for cast in post['casts'] %}
+                        &nbsp<a href="">{{ cast }}</a>
                     {% end %}
                 </p>
-                <p>简介： {{ douban_movie['summary'] }}</p>
+                <p>简介： {{ post['summary'] }}</p>
             </div>
         </div>
         <hr>

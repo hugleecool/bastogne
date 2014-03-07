@@ -11,8 +11,8 @@
                         {{ post['rating'] }}
                     </span>&nbsp
                     <span>
-                        {% for tag in post['genres'] %}
-                            {{ tag }}
+                        {% for genre in post['genres'] %}
+                            <a href="/movie?genre={{ genre }}">{{ genre }}</a>
                         {% end %}
                     </span>
                 </small>
@@ -24,22 +24,22 @@
                 </div>
                 <div class="col-md-7">
                     <p>片名： {{ post['title'] }}</p>
-                    <p>年代： {{ post['year'] }}</p>
+                    <p>年代： <a href="/movie?year={{ post['year'] }}">{{ post['year'] }}</a></p>
                     <p>导演:&nbsp&nbsp
                         {% for director in post['directors'] %}
-                            <a href="">{{ director }}</a>
+                            <a href="/movie?director={{ director }}">{{ director }}</a>
                         {% end %}
                     </p>
                     <p>主演:&nbsp&nbsp
                         {% for cast in post['casts'] %}
-                            &nbsp<a href="">{{ cast }}</a>
+                            &nbsp<a href="/movie?cast={{ cast }}">{{ cast }}</a>
                         {% end %}
                     </p>
                     <p>简介： {{ post['summary'][0:240] }}</p>
                 </div>
             </div>
         </div>
-            <hr>
+        <hr>
     {% end %}
     <div>
         <ul class="pagination">

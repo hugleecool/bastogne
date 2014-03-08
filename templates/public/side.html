@@ -1,5 +1,11 @@
 <div>
+    <h3>类别</h3>
     {% for genre in side['genres'] %}
         <a href="/movie?genre={{ genre }}">{{ genre }}{{ side['genres'][genre] }}</a>
+    {% end %}
+    <hr>
+    <h3>年代</h3>
+    {% for year in range(1930, 2014) %}
+        <a href="/movie?year={{ year }}">{{ year }}</a>
     {% end %}
 </div>

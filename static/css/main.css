@@ -1,10 +1,23 @@
 html {
     height: 100%;
 }
+body {
+    padding-top: 70px;
+}
 #wrap {
     min-height: 500px;
 }
 
-footer {
+.post h1 {
+    font-size: 25px;
+}
 
+footer {
+    padding: 30px;
+    background-color: #444749;
+    color: #fff;
+}
+
+.navbar {
+    border-radius: 0px;
 }

@@ -4,8 +4,8 @@
 {% include 'public/head.html' %}
 </head>
 <body>
+{% include public/header.html %}
 <div id="wrap" class="container">
-    {% include public/header.html %}
     {% block container %}
         <div id="main" class="col-md-8 col-sm-7">
             {% block main %}
@@ -18,7 +18,6 @@
         </div>
     {% end %}
 </div>
-<hr>
 {% include 'public/footer.html' %}
 </body>
 </html>

@@ -1,10 +1,35 @@
-<div class="page-header">
-    <h1 class="row">
-        <div class="col-md-8">
-            <a href="/">Bastogne</a><small> 高清电影下载</small>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Bastogne</a>
         </div>
-        <form class="search col-md-4" action="/post/search" method="get">
-            <input type="search" name="q" placeholder="影片搜索, 近两万部高清影片，回车搜索" class="form-control" role="search">
-        </form>
-    </h1>
-</div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                {% for genre in side['genres'] %}
+                    {% if genre != '_id' and int(side['genres'][genre]) > 600 %}
+                        <li class=""><a href="/movie?genre={{ genre }}">{{ genre }}</a></li>
+                    {% end %}
+                {% end %}
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">排序 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">分数</a></li>
+                        <li><a href="#">年代</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                    <span class="glyphicon glyphicon-search"></span>
+                </div>
+            </form>
+        </div>
+    </div>
+</nav>

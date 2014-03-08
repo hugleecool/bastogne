@@ -11,14 +11,13 @@ class BaseHandler(tornado.web.RequestHandler):
     def conf(self):
         return conf
 
-    @staticmethod
-    def get_side():
+    def get_side(self):
         """获取侧边栏内容
 
         通用侧边栏数据
         """
         side = {
-            'tags': '',
+            'genres': self.db.genres.find_one(),
         }
         return side
 

@@ -1,1 +1,5 @@
-<gcse:searchresults></gcse:searchresults>
+<div>
+    {% for genre in side['genres'] %}
+        <a href="/movie?genre={{ genre }}">{{ genre }}{{ side['genres'][genre] }}</a>
+    {% end %}
+</div>

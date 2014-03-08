@@ -8,7 +8,10 @@ class IndexHandler(BaseHandler):
         posts_count = posts.count()
         page_number = posts_count / self.conf['POST_NUM'] if posts_count % self.conf['POST_NUM'] == 0 \
             else posts_count // self.conf['POST_NUM'] + 1
-        self.render('index/index.html', posts=posts, page=page)
+        if page > page_number:
+            self.write_error(404)
+        else:
+            self.render('index/index.html', posts=posts, page=page)
 
 
 class MovieHandler(BaseHandler):

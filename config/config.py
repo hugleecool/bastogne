@@ -1,12 +1,10 @@
-#数据库配置
-database = {
-    'host': 'localhost',
-    'database': 'notepy',
-    'user': 'root',
-    'password': 'root',
-    'autocommit': True,
-    'buffered': True,
+"""配置文件
+
+"""
+conf = {
+    'POST_NUM': 10,
 }
+
 
 settings = {
     "app": 'Bastogne',

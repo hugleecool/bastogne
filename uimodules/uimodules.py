@@ -15,6 +15,11 @@ class RandomPost(tornado.web.UIModule):
             return ''
 
 
+class GenreMovie(tornado.web.UIModule):
+    def render(self, *args, **kwargs):
+        pass
+
+
 class Tag(tornado.web.UIModule):
     """获取所有标签"""
     def render(self, tags, show=conf['TAG_NUM']):

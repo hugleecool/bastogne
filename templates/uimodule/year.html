@@ -1,0 +1,6 @@
+<div>
+    <h3>年代</h3>
+    {% for y in range(year['start'], year['end']) %}
+        <a href="/movie?year={{ y }}">{{ y }}</a>
+    {% end %}
+</div>

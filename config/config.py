@@ -2,7 +2,15 @@
 
 """
 conf = {
-    'POST_NUM': 10,
+    #分页中每页显示影片数量
+    'MOVIE_NUM': 10,
+    'RANDOM_MOVIE_NUM': 6,
+    #分类中显示的分类数目
+    'GENRES_NUM': 100,
+    'YEAR': {
+        'start': 1930,
+        'end': 2014,
+    }
 }
 
 

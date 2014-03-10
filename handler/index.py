@@ -4,10 +4,10 @@ from .base import BaseHandler
 class IndexHandler(BaseHandler):
     def get(self, page=0):
         page = int(page)
-        posts = self.db.movie.find().skip(self.conf['POST_NUM'] * page).limit(self.conf['POST_NUM'])
+        posts = self.db.movie.find().skip(self.conf['MOVIE_NUM'] * page).limit(self.conf['MOVIE_NUM'])
         posts_count = posts.count()
-        page_number = posts_count / self.conf['POST_NUM'] if posts_count % self.conf['POST_NUM'] == 0 \
-            else posts_count // self.conf['POST_NUM'] + 1
+        page_number = posts_count / self.conf['MOVIE_NUM'] if posts_count % self.conf['MOVIE_NUM'] == 0 \
+            else posts_count // self.conf['MOVIE_NUM'] + 1
         if page > page_number:
             self.write_error(404)
         else:

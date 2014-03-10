@@ -6,9 +6,11 @@ from tornado.options import define, options
 from pymongo import MongoClient
 from config.config import settings
 from config.urls import urls as handlers
+from uimodules import uimodules
 
 
 define('port', default=10000, help='监听端口', type=int)
+settings['ui_modules'] = uimodules
 handlers.append((r"(apple-touch-icon\.png)", tornado.web.StaticFileHandler, dict(path=settings['static_path'])))
 
 

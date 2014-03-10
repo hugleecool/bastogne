@@ -17,7 +17,8 @@ class BaseHandler(tornado.web.RequestHandler):
         通用侧边栏数据
         """
         side = {
-            'genres': self.db.genres.find_one(),
+            'genres': self.db.genres.find(),
+            'nav': self.db.genres.find(),
         }
         return side
 

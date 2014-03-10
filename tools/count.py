@@ -16,4 +16,3 @@ for movie in movies:
             genres[genre] = 1
 
 print(genres)
-db.genres.insert(genres)

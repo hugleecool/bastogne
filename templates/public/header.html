@@ -11,9 +11,9 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                {% for genre in side['genres'] %}
-                    {% if genre != '_id' and int(side['genres'][genre]) > 600 %}
-                        <li class=""><a href="/movie?genre={{ genre }}">{{ genre }}</a></li>
+                {% for genre in side['nav'] %}
+                    {% if int(genre['count']) > 600 %}
+                        <li class=""><a href="/movie?genre={{ genre['tag'] }}">{{ genre['tag'] }}</a></li>
                     {% end %}
                 {% end %}
                 <li class="dropdown">

@@ -22,6 +22,12 @@ class BaseHandler(tornado.web.RequestHandler):
         }
         return side
 
+    def get_same_kind_movie(self, key, post):
+        """获取同类影片
+        genres 部分匹配，并排除自身
+        """
+        return self.db.movie.find({key: {'$in': post['genres']}, 'id': {'$ne': post['id']}}).limit(8)
+
     def write_error(self, status_code, **kwargs):
         if status_code == 404:
             self.render('public/404.html')

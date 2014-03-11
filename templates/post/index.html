@@ -40,6 +40,7 @@
         </div>
         <hr>
         <div class="download">
+            <h4>下载</h4>
             <table class="table">
                 <thead>
                     <tr>
@@ -58,4 +59,6 @@
             </table>
         </div>
     </div>
+    <hr>
+    {% module SameKindMovie(handler.get_same_kind_movie('genres', post)) %}
 {% end %}

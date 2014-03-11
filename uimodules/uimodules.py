@@ -35,8 +35,12 @@ class PageNav(tornado.web.UIModule):
     只有一页时不显示分页
     当分页过多时应该只显示部分，但似乎这不是问题，是我多虑了，哈哈！
     """
-    def render(self, nav, show=False):
-        if show:
-            return self.render_string("uimodule/page-nav.html", page=nav)
-        else:
-            return ''
+    def render(self, nav):
+        return self.render_string('uimodule/page-nav.html', page=nav)
+
+
+class SameKindMovie(tornado.web.UIModule):
+    """同类型影片
+    """
+    def render(self, posts, show=True):
+        return self.render_string('uimodule/same-kind-movie.html', posts=posts)

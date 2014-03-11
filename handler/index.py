@@ -11,7 +11,7 @@ class IndexHandler(BaseHandler):
         if page > page_number:
             self.write_error(404)
         else:
-            self.render('index/index.html', posts=posts, side=self.get_side(), page=page, nav=page)
+            self.render('index/index.html', posts=posts, side=self.get_side(), page=page, nav=page, url='')
 
 
 class MovieHandler(BaseHandler):
@@ -33,8 +33,14 @@ class MovieHandler(BaseHandler):
         if genre is not '':
             query['genres'] = genre
 
+
         posts = self.db.movie.find(query).skip(10*page).limit(10)
         self.render('index/index.html', posts=posts, side=self.get_side(), page=page, nav=page)
+
+
+class TestHandler(BaseHandler):
+    def get(self, *args, **kwargs):
+        print(kwargs)
 
 
 class SearchHandler(BaseHandler):

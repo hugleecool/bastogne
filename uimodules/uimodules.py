@@ -37,11 +37,6 @@ class PageNav(tornado.web.UIModule):
     """
     def render(self, nav, show=False):
         if show:
-            if nav['num'] % conf['MOVIE_NUM'] != 0:
-                nav['num'] = nav['num'] // conf['MOVIE_NUM'] + 1
-            else:
-                nav['num'] = nav['num'] // conf['MOVIE_NUM']
-            if nav['num'] != 1:
-                return self.render_string("uimodule/page-nav.html", nav=nav)
-            else:
-                return ''
+            return self.render_string("uimodule/page-nav.html", page=nav)
+        else:
+            return ''

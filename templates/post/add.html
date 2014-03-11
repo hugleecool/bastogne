@@ -1,0 +1,15 @@
+{% extends '../base.html' %}
+{% block title %}添加影片条目{% end %}
+{% block main %}
+    <form role="form">
+        <div class="form-group">
+            <label for="douban_id">豆瓣影片ID</label>
+            <input type="text" class="form-control" id="douban_id" placeholder="输入豆瓣影片ID">
+        </div>
+        <div class="form-group">
+            <label for="download">下载资源</label>
+            <input type="datetime" class="form-control" id="download" placeholder="输入豆瓣影片ID">
+        </div>
+        <button type="submit" class="btn btn-primary">添加</button>
+    </form>
+{% end %}

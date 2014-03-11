@@ -44,3 +44,10 @@ class SameKindMovie(tornado.web.UIModule):
     """
     def render(self, posts, show=True):
         return self.render_string('uimodule/same-kind-movie.html', posts=posts)
+
+
+class HotMovie(tornado.web.UIModule):
+    """热门影片
+    """
+    def render(self, posts):
+        return self.render_string('uimodule/hot-movie.html', posts=posts)

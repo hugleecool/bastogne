@@ -15,6 +15,7 @@
             {% block side %}
                 {% module Genres(side['genres']) %}
                 {% module Year() %}
+                {% module HotMovie(handler.get_hot_movie()) %}
             {% end %}
         </div>
     {% end %}

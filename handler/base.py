@@ -28,6 +28,12 @@ class BaseHandler(tornado.web.RequestHandler):
         """
         return self.db.movie.find({key: {'$in': post['genres']}, 'id': {'$ne': post['id']}}).limit(8)
 
+    def get_hot_movie(self):
+        """获取热门影片
+        """
+        return self.db.movie.find({'hot': {'$gte': conf['HOT_MOVIE']['hot']}}).limit(conf['HOT_MOVIE']['num']).\
+            sort([('hot', -1)])
+
     def write_error(self, status_code, **kwargs):
         if status_code == 404:
             self.render('public/404.html')

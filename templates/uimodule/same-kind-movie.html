@@ -3,7 +3,7 @@
     <div class="row">
         {% for post in posts %}
             <div class="col-md-3">
-                <a href="/post/{{ post['id'] }}"><img class="col-md-12" height="200px" src="{{ post['image'] }}"></a>
+                <a href="/post/{{ post['id'] }}"><img class="col-md-12 img-rounded" height="200px" src="{{ post['image'] }}"></a>
                 <p class="text-center"><a href="/post/{{ post['id'] }}">{{ post['title'] }}</a></p>
             </div>
         {% end %}

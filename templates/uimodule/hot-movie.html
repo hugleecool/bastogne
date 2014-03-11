@@ -1,0 +1,8 @@
+<div class="hot">
+    <h3>热门影片</h3>
+    {% for post in posts %}
+        <div>
+            <a href="/post/{{ post['id'] }}">{{ post['title'] }}</a>
+        </div>
+    {% end %}
+</div>

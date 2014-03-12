@@ -13,16 +13,9 @@
             <ul class="nav navbar-nav">
                 {% for genre in side['nav'] %}
                     {% if int(genre['count']) > 600 %}
-                        <li class=""><a href="/movie?genre={{ genre['tag'] }}">{{ genre['tag'] }}</a></li>
+                        <li class=""><a href="/movie?genres={{ genre['tag'] }}">{{ genre['tag'] }}</a></li>
                     {% end %}
                 {% end %}
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">排序 <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">分数</a></li>
-                        <li><a href="#">年代</a></li>
-                    </ul>
-                </li>
             </ul>
             <form class="navbar-form navbar-left" role="search">
                 <div class="form-group">

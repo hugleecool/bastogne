@@ -12,7 +12,7 @@
                     </span>&nbsp
                     <span>
                         {% for genre in post['genres'] %}
-                            <a href="/movie?genre={{ genre }}">{{ genre }}</a>
+                            <a href="/movie?genres={{ genre }}">{{ genre }}</a>
                         {% end %}
                     </span>
                     <span class="pull-right">
@@ -32,12 +32,12 @@
                     <p>年代： <a href="/movie?year={{ post['year'] }}">{{ post['year'] }}</a></p>
                     <p>导演:&nbsp&nbsp
                         {% for director in post['directors'] %}
-                            <a href="/movie?director={{ director }}">{{ director }}</a>
+                            <a href="/movie?directors={{ director }}">{{ director }}</a>
                         {% end %}
                     </p>
                     <p>主演:&nbsp&nbsp
                         {% for cast in post['casts'] %}
-                            &nbsp<a href="/movie?cast={{ cast }}">{{ cast }}</a>
+                            &nbsp<a href="/movie?casts={{ cast }}">{{ cast }}</a>
                         {% end %}
                     </p>
                     <p>简介： {{ post['summary'][0:240] }}</p>
@@ -46,5 +46,5 @@
         </div>
         <hr>
     {% end %}
-    {% module PageNav(nav) %}
+    {% module PageNav(page_nav) %}
 {% end %}

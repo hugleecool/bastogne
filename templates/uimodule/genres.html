@@ -1,7 +1,7 @@
 <div>
     <h3>类别</h3>
     {% for genre in genres %}
-        <a href="/movie?genre={{ genre['tag'] }}">{{ genre['tag'] }}</a>
+        <a href="/movie?genres={{ genre['tag'] }}">{{ genre['tag'] }}</a>
     {% end %}
     <hr>
 </div>

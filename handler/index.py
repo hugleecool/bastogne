@@ -39,12 +39,17 @@ class SearchHandler(BaseHandler):
     def get(self):
         q = self.get_argument('q', '')
         page = self.get_argument('page', 0)
-        posts = self.db.movie.find({'$or': [{'title': q}, {'casts': q}, {'directors': q}]})\
+        posts = self.db.movie.find({'$or': [{'title': q}, {'casts': q}, {'directors': q}, {'db_id': q}]})\
             .skip(self.conf['MOVIE_NUM'] * page).limit(self.conf['MOVIE_NUM'])\
             .sort([('id', 1)])
 
         if not posts.count():
-            self.send_error(404)
+            result = """
+            没有找到符合的影片，请重新尝试!
+            目前仅可支持按影片名、豆瓣ID、导演或演员名查找。
+            """
+
+            self.render('public/no-result.html', result=result, side=self.get_side())
         else:
             page_nav = {
                 'page': page,

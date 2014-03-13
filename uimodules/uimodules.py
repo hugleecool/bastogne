@@ -2,18 +2,6 @@ import tornado.web
 from config.config import conf
 
 
-class RandomMovie(tornado.web.UIModule):
-    """随机显示
-    用于侧边栏显示
-    """
-    def render(self, posts, show=conf['RANDOM_MOVIE_NUM']):
-        if show:
-            return self.render_string("uimodule/random-movie.html", posts=posts)
-        else:
-            #返回空，否则会显示NaN,下同
-            return ''
-
-
 class Genres(tornado.web.UIModule):
     def render(self, genres, show=True):
         if show:

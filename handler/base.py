@@ -11,6 +11,13 @@ class BaseHandler(tornado.web.RequestHandler):
     def conf(self):
         return conf
 
+    def get_current_user(self):
+        uid = self.get_secure_cookie('uid')
+        if not uid:
+            return None
+        else:
+            self.db.user.find_one({'id': uid})
+
     def get_side(self):
         """获取侧边栏内容
 

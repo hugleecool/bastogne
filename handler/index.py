@@ -21,7 +21,8 @@ class MovieHandler(BaseHandler):
         if genres is not '':
             query['genres'] = genres
 
-        posts = self.db.movie.find(query).skip(self.conf['MOVIE_NUM'] * page).limit(self.conf['MOVIE_NUM'])
+        posts = self.db.movie.find(query).skip(self.conf['MOVIE_NUM'] * page).limit(self.conf['MOVIE_NUM'])\
+            .sort([('id', 1)])
 
         page_nav = {
             'page': page,
@@ -33,7 +34,9 @@ class MovieHandler(BaseHandler):
 
 class SearchHandler(BaseHandler):
     def get(self):
-        self.render('index/search.html')
+        q = self.get_argument('q', '')
+        posts = self.db.movie.find()
+        self.render('index/index.html', posts=posts, side=self.get_side())
 
 
 class LoginHandler(BaseHandler):
@@ -41,7 +44,8 @@ class LoginHandler(BaseHandler):
         self.render('index/login.html', side=self.get_side())
 
     def post(self, *args, **kwargs):
-        pass
+        username = self.get_argument('username')
+        password = self.get_argument('password')
 
 
 class LogoutHandler(BaseHandler):

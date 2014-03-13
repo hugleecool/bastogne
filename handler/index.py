@@ -24,12 +24,15 @@ class MovieHandler(BaseHandler):
         posts = self.db.movie.find(query).skip(self.conf['MOVIE_NUM'] * page).limit(self.conf['MOVIE_NUM'])\
             .sort([('id', 1)])
 
-        page_nav = {
-            'page': page,
-            'count': posts.count(),
-            'url': '/movie?' + urlencode(query)
-        }
-        self.render('index/index.html', posts=posts, side=self.get_side(), page_nav=page_nav)
+        if not posts.count():
+            self.send_error(404)
+        else:
+            page_nav = {
+                'page': page,
+                'count': posts.count(),
+                'url': '/movie?' + urlencode(query)
+            }
+            self.render('index/index.html', posts=posts, side=self.get_side(), page_nav=page_nav)
 
 
 class SearchHandler(BaseHandler):

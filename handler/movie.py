@@ -3,10 +3,13 @@ from .base import BaseHandler
 
 class PostHandler(BaseHandler):
     def get(self, pid):
-        #每访问一次热度加1
-        self.db.movie.update({'id': int(pid)}, {'$inc': {'hot': 1}})
         post = self.db.movie.find_one({'id': int(pid)})
-        self.render('post/index.html', post=post, side=self.get_side())
+        if post is None:
+            self.send_error(404)
+        else:
+            #每访问一次热度加1
+            self.db.movie.update({'id': int(pid)}, {'$inc': {'hot': 1}})
+            self.render('post/index.html', post=post, side=self.get_side())
 
 
 class AddHandler(BaseHandler):

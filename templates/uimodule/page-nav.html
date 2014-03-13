@@ -1,13 +1,7 @@
 <div>
-    <ul class="pagination">
-    <li class={% if page < 10 %}"disabled"{% end %}><a href="{{ url }}&page={{ page-10 }}">&laquo;</a></li>
-    {% for i in range(page-5, page+5) if page>5 else range(page+5) %}
-        {% if i == page %}
-            <li class="active"><a href="{{ url }}&page={{ page }}">{{ i }}<span class="sr-only">(current)</span></a></li>
-        {% else %}
-            <li><a href="{{ url }}&page={{ i }}">{{ i }}<span class="sr-only">(current)</span></a></li>
-        {% end %}
-    {% end %}
-    <li class={% if page > num %}"disabled"{% end %}><a href="{{ url }}&page={{ page+10 }}">&raquo;</a></li>
+    <ul class="pager">
+      <li class="previous {% if page <= 1 %}disabled{% end %}"><a href="{{ url }}&page={{ page - 1 }}">&larr; 上一页</a></li>
+      <li>第{{ page }}页/共{{ num }}页</li>
+      <li class="next {% if page >= num-1 %}disabled{% end %}"><a href="{{ url }}&page={{ page + 1 }}">下一页 &rarr;</a></li>
     </ul>
 </div>

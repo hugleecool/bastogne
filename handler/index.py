@@ -38,8 +38,20 @@ class MovieHandler(BaseHandler):
 class SearchHandler(BaseHandler):
     def get(self):
         q = self.get_argument('q', '')
-        posts = self.db.movie.find()
-        self.render('index/index.html', posts=posts, side=self.get_side())
+        page = self.get_argument('page', 0)
+        posts = self.db.movie.find({'$or': [{'title': q}, {'casts': q}, {'directors': q}]})\
+            .skip(self.conf['MOVIE_NUM'] * page).limit(self.conf['MOVIE_NUM'])\
+            .sort([('id', 1)])
+
+        if not posts.count():
+            self.send_error(404)
+        else:
+            page_nav = {
+                'page': page,
+                'count': posts.count(),
+                'url': '/movie?' + urlencode({'q': q})
+            }
+            self.render('index/index.html', posts=posts, side=self.get_side(), page_nav=page_nav)
 
 
 class LoginHandler(BaseHandler):

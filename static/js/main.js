@@ -3,6 +3,6 @@ $(document).ready(function() {
         event.preventDefault()
     });
 
-    $(".genres").pin();
+//    $(".genres").pin();
 })
 

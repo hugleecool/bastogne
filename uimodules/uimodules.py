@@ -41,3 +41,10 @@ class HotMovie(tornado.web.UIModule):
     """
     def render(self, posts):
         return self.render_string('uimodule/hot-movie.html', posts=posts)
+
+
+class ChangYan(tornado.web.UIModule):
+    """热门影片
+    """
+    def render(self):
+        return self.render_string('uimodule/changyan.html')

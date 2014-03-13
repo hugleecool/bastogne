@@ -2,6 +2,6 @@
     <ul class="pager">
       <li class="previous {% if page <= 1 %}disabled{% end %}"><a href="{{ url }}&page={{ page - 1 }}">&larr; 上一页</a></li>
       <li>第{{ page }}页/共{{ num }}页</li>
-      <li class="next {% if page >= num-1 %}disabled{% end %}"><a href="{{ url }}&page={{ page + 1 }}">下一页 &rarr;</a></li>
+      <li class="next {% if page >= num %}disabled{% end %}"><a href="{{ url }}&page={{ page + 1 }}">下一页 &rarr;</a></li>
     </ul>
 </div>

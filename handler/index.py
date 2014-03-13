@@ -4,7 +4,7 @@ from .base import BaseHandler
 
 class MovieHandler(BaseHandler):
     def get(self):
-        page = int(self.get_argument('page', 0))
+        page = int(self.get_argument('page', 1)) - 1
         year = self.get_argument('year', '')
         directors = self.get_argument('directors', '')
         casts = self.get_argument('casts', '')
@@ -28,7 +28,7 @@ class MovieHandler(BaseHandler):
             self.send_error(404)
         else:
             page_nav = {
-                'page': page,
+                'page': page + 1,
                 'count': posts.count(),
                 'url': '/movie?' + urlencode(query)
             }

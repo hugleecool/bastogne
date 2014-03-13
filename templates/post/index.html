@@ -62,3 +62,7 @@
     <hr>
     {% module SameKindMovie(handler.get_same_kind_movie('genres', post)) %}
 {% end %}
+{% block side %}
+    {% module Genres(side['genres']) %}
+    {% module Year() %}
+{% end %}

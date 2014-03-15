@@ -19,10 +19,6 @@ class Year(tornado.web.UIModule):
 
 
 class PageNav(tornado.web.UIModule):
-    """分页导航
-    只有一页时不显示分页
-    当分页过多时应该只显示部分，但似乎这不是问题，是我多虑了，哈哈！
-    """
     def render(self, page_nav):
         page_nav['num'] = page_nav['count'] // conf['MOVIE_NUM'] if page_nav['count'] % conf['MOVIE_NUM'] == 0 \
             else page_nav['count'] // conf['MOVIE_NUM'] + 1
